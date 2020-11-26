@@ -274,19 +274,25 @@ void InputConvertGame::processSteerWheel(const KeyMap::KeyMapNode &node, const Q
         int id = getTouchID(m_ctrlSteerWheel.touchKey);
         sendTouchUpEvent(id, node.data.steerWheel.centerPos + m_ctrlSteerWheel.lastOffset);
         detachTouchID(m_ctrlSteerWheel.touchKey);
-    } else {
+    }else if(pressedNum >= 3){
+        // fix 超过三个方向触摸错位的问题
+        return;
+    }
+    else {
         int id;
         // first press, get key and touch down
         if (pressedNum == 1 && flag) {
             m_ctrlSteerWheel.touchKey = from->key();
-            id = attachTouchID(m_ctrlSteerWheel.touchKey);
+            id = attachTouchID(m_ctrlSteerWheel.touchKey);            
             sendTouchDownEvent(id, node.data.steerWheel.centerPos);
         } else {
             // jsut get touch id and move
             id = getTouchID(m_ctrlSteerWheel.touchKey);
         }
+        qDebug()<<"pressedNum"<<pressedNum<<" sendTouchMoveEvent("<<id<<","<<node.data.steerWheel.centerPos + offset<<")";
         sendTouchMoveEvent(id, node.data.steerWheel.centerPos + offset);
     }
+
     m_ctrlSteerWheel.lastOffset = offset;
     return;
 }
