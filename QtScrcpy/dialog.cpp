@@ -92,6 +92,7 @@ void Dialog::initUI()
     ui->bitRateBox->addItem("8000000");
     ui->bitRateBox->addItem("10000000");
     ui->bitRateBox->addItem("20000000");
+    ui->bitRateBox->addItem("30000000");
     ui->bitRateBox->addItem("50000000");
     ui->bitRateBox->addItem("100000000");
     ui->bitRateBox->addItem("200000000");
