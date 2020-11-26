@@ -5,7 +5,7 @@
 
 #include "inputconvertgame.h"
 
-#define CURSOR_POS_CHECK 50
+#define CURSOR_POS_CHECK 150
 
 InputConvertGame::InputConvertGame(Controller *controller) : InputConvertNormal(controller) {}
 
