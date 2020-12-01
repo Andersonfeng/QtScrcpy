@@ -58,6 +58,7 @@ protected:
 
     bool switchGameMap();
     bool checkCursorPos(const QMouseEvent *from);
+    void setMousePosToStartPos();
     void hideMouseCursor(bool hide);
 
 protected:
@@ -83,7 +84,7 @@ private:
         bool pressedLeft = false;
         bool pressedRight = false;
         // for last up
-        QPointF lastOffset;
+        QPointF lastOffset;        
     } m_ctrlSteerWheel;
 
     // mouse move
